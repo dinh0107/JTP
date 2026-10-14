@@ -1,0 +1,24 @@
+---
+description: Tái sử dụng class. Modifier chỉ ghi phần khác. Không để CSS chết.
+alwaysApply: true
+---
+
+# CSS: tái sử dụng, modifier, không rule chết
+
+Trước khi viết class hoặc rule mới, dùng lại class và rule đã có trong `style/style.css`. Không chép một khối chỉ để đổi một chỗ.
+
+Hai rule giống nhau và chỉ khác modifier thì viết phần chung một lần. Modifier chỉ khai báo thuộc tính đổi. Không tạo class mới khi gắn modifier lên class đã có là đủ.
+
+```css
+/* ❌ chép nguyên rule, chỉ khác màu */
+.btn { padding: 12px 16px; border-radius: 8px; background: #f58220; color: #fff; }
+.btn-outline { padding: 12px 16px; border-radius: 8px; background: transparent; color: #f58220; }
+
+/* ✅ */
+.btn { padding: 12px 16px; border-radius: 8px; background: #f58220; color: #fff; }
+.btn.outline { background: transparent; color: #f58220; }
+```
+
+Chỉ thêm selector và thuộc tính khi chúng đổi cách phần tử hiển thị. Xóa rule và thuộc tính vừa thành vô dụng. Không comment-out để dành.
+
+Không thêm selector không còn gắn class nào trong view, rule trùng mà không ghi đè được gì, thuộc tính bị rule khác đè ngay, giá trị mặc định của trình duyệt, thuộc tính không áp dụng cho loại phần tử đó, hoặc reset dài khi chỉ một thuộc tính đang thừa.

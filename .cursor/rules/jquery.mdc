@@ -1,0 +1,24 @@
+---
+description: Hành vi trang dùng jQuery đã nạp, không viết DOM thuần cho việc jQuery làm được.
+alwaysApply: true
+---
+
+# JS: dùng jQuery
+
+Thao tác DOM và sự kiện dùng jQuery đã nạp ở cuối trang. Không viết `querySelector`, `addEventListener`, `classList` cho việc jQuery làm được.
+
+```javascript
+/* ❌ */
+document.querySelector(".nav-toggle").addEventListener("click", function () {
+  document.querySelector(".site-header").classList.toggle("open");
+});
+
+/* ✅ */
+$(".nav-toggle").on("click", function () {
+  $(".site-header").toggleClass("open");
+});
+```
+
+Code chạy sau khi jQuery có mặt. Không thêm thư viện khác cho vài dòng jQuery đã làm được.
+
+`components/site.js` giữ nguyên: file này nạp header/footer trước khi có jQuery.

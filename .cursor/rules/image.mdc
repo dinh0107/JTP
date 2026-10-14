@@ -1,0 +1,32 @@
+---
+description: Ảnh không dùng object-fit, aspect-ratio, hay position absolute.
+alwaysApply: true
+---
+
+# Ảnh: không object-fit, aspect-ratio, position absolute
+
+Với mọi ảnh (`img`, `picture img`, SVG dùng như ảnh), không gán:
+
+- `object-fit` (mọi giá trị, kể cả `cover` và `contain`)
+- `aspect-ratio`
+- `position: absolute`
+
+Cấm trong stylesheet, inline style, và class utility (`position-absolute` trên chính ảnh).
+
+Kích thước ảnh chỉ qua `width` / `max-width` và tỉ lệ gốc của file. Không bọc thêm một lớp chỉ để né luật này.
+
+```html
+<!-- ❌ -->
+<img class="position-absolute" style="object-fit: cover; aspect-ratio: 16/9" alt="">
+
+<!-- ✅ -->
+<img class="w-100" alt="">
+```
+
+```css
+/* ❌ */
+.banner img { object-fit: cover; aspect-ratio: 16 / 9; position: absolute; }
+
+/* ✅ */
+.banner img { width: 100%; }
+```

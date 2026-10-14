@@ -1,0 +1,56 @@
+---
+description: Class đặt ở khối cha. Tránh thẻ p. Heading đến h2. Button và input chỉ trong form.
+alwaysApply: true
+---
+
+# HTML: class trên cha, hạn chế p, heading đến h2, form
+
+Tái sử dụng khối đã có (`site-header`, `site-footer`, class trong `style/style.css`) trước khi viết markup mới.
+
+Class đặt trên khối cha. Không rải class xuống từng lớp, và không đặt class lên phần tử cuối khi cha đã đủ để chọn nó. CSS viết từ cha: `.info a`, `.social span`.
+
+Mỗi `<div>` phải có class, kể cả class rỗng `class=""`. Không để `<div>` trống class khi cha đã chọn được nó. CSS viết từ class đó, không viết selector `div` trần.
+
+Không dùng `<p>`. Chữ dùng `span`, `strong`, `em`, `small`, `label`. Không thêm thẻ chỉ để xuống dòng.
+
+Mỗi trang một `h1`. Heading còn lại chỉ `h2`. Không dùng `h3`, `h4`, `h5`, `h6`. Không dùng `h2` cho dòng chữ thường.
+
+`<button>` và `<input>` chỉ nằm trong `<form>`. Ngoài form không dùng, kể cả `type="button"` hay ô tìm kiếm.
+
+`<a>` chỉ khi dẫn tới một trang. Nút, tab, mũi tên trượt không dùng `<a>`, kể cả `href="#"`. Việc bấm không đổi trang dùng `span`.
+
+```html
+<!-- ❌ div không class, thẻ p, heading quá h2, button ngoài form -->
+<div class="grant">
+  <div>
+    <a href="#">Học bổng DAV</a>
+  </div>
+</div>
+<div class="info">
+  <p class="info-phone">024 3834 5678</p>
+  <h3 class="info-title">Liên hệ</h3>
+  <button type="button">Mở menu</button>
+  <input type="search" placeholder="Tìm kiếm">
+</div>
+
+<!-- ✅ mỗi div có class, một h1, còn lại h2, button/input trong form -->
+<div class="grant">
+  <div class="copy">
+    <a href="#">Học bổng DAV</a>
+  </div>
+</div>
+<div class="info">
+  <h1>Liên hệ</h1>
+  <span>024 3834 5678</span>
+  <h2>Văn phòng</h2>
+  <span>Mở menu</span>
+</div>
+<form>
+  <input type="search" placeholder="Tìm kiếm">
+  <button type="submit">Gửi</button>
+</form>
+```
+
+```css
+.info span { color: #334155; }
+```

@@ -1,0 +1,22 @@
+---
+description: font-size và font-weight chép đúng số trên node chữ Figma. Không làm tròn, không đổi đơn vị.
+alwaysApply: true
+---
+
+# Font: đúng family, size, weight
+
+Font của dự án là **Inter**, đã nạp trong `style/style.css`. Không đổi sang font khác, không thêm font fallback ngoài `sans-serif`.
+
+- `font-family: Inter, sans-serif` khai báo một lần ở `body`. Chỉ ghi lại khi một khối dùng font khác.
+- `font-size` chép đúng `fontSize` của node chữ trên Figma, giữ `px`. Figma ghi `15` thì CSS là `15px`. Không làm tròn (`15` thành `16`), không đổi sang `rem`/`em`.
+- `font-weight` chép đúng `fontWeight` của node đó, viết bằng số. Figma ghi `600` thì CSS là `600`. Không viết `bold` thay cho `600`, không viết `normal` thay cho `400` hoặc `500`.
+- Mỗi node chữ một cặp size/weight. Không lấy số của node khác, không dùng một cỡ chung cho cả khối.
+- Giá trị giống cha thì không viết lại.
+
+```css
+/* ❌ Figma: 15 / 600 — làm tròn và đổi weight */
+.title { font-size: 16px; font-weight: bold; }
+
+/* ✅ đúng node Figma */
+.title { font-size: 15px; font-weight: 600; }
+```
