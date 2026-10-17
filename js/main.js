@@ -23,7 +23,9 @@ $(".campus .quote span, .dav .scroll > span").each(function () {
   paint();
 });
 
-$(".stat strong span, .about-lead .stats span").counterUp({ delay: 10, time: 1200 });
+$(".counter-up").filter(function () {
+  return /^[0-9,]+$/.test($(this).text());
+}).counterUp({ delay: 10, time: 1200 });
 
 $(".programs .nav-tabs a, .alumni .nav-tabs a").on("click", function (e) {
   e.preventDefault();

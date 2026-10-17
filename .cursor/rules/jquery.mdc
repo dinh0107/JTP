@@ -22,3 +22,9 @@ $(".nav-toggle").on("click", function () {
 Code chạy sau khi jQuery có mặt. Không thêm thư viện khác cho vài dòng jQuery đã làm được.
 
 `components/site.js` giữ nguyên: file này nạp header/footer trước khi có jQuery.
+
+Số chạy counter-up chỉ khi có class `counter-up`. Không gắn selector riêng cho từng khối. Chữ trong class phải là số (dấu phẩy hàng nghìn được). Hậu tố như `+` để ở `data-suffix`, không viết vào chữ số.
+
+```html
+<span class="counter-up" data-suffix="+">100</span>
+```

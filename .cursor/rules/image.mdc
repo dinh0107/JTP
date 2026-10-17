@@ -1,7 +1,19 @@
 ---
-description: Ảnh không dùng object-fit, aspect-ratio, hay position absolute.
+description: Ảnh không object-fit, aspect-ratio, position absolute. Ảnh đã có trong kho thì không tải lại.
 alwaysApply: true
 ---
+
+# Ảnh: đã có file giống thì không tải lại
+
+Trước khi tải ảnh từ Figma hoặc URL tạm, xem `image/`. Cùng nội dung (watermark, logo, icon, ảnh nền) thì trỏ `src` vào file đã có. Không lưu bản thứ hai với tên khác.
+
+```html
+<!-- ❌ đã có image/jtp-mark.png -->
+<img src="image/why-mark.png" alt="">
+
+<!-- ✅ -->
+<img src="image/jtp-mark.png" alt="">
+```
 
 # Ảnh: không object-fit, aspect-ratio, position absolute
 

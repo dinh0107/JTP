@@ -17,5 +17,5 @@ function part(tag, markup, src) {
 }
 
 var dir = new URL("./", document.currentScript.src);
-document.write('<script src="' + new URL("header.html?v=links", dir).href + '"><\/script>');
-document.write('<script src="' + new URL("footer.html?v=links", dir).href + '"><\/script>');
+document.write('<script src="' + new URL("header.html?v=links2", dir).href + '"><\/script>');
+document.write('<script src="' + new URL("footer.html?v=links2", dir).href + '"><\/script>');

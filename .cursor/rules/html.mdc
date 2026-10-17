@@ -1,5 +1,5 @@
 ---
-description: Class đặt ở khối cha. Tránh thẻ p. Heading đến h2. Button và input chỉ trong form.
+description: Class trên cha. Hai thẻ giống nhau mỗi thẻ một class. Tránh p. Heading đến h2. Button và input chỉ trong form.
 alwaysApply: true
 ---
 
@@ -8,6 +8,8 @@ alwaysApply: true
 Tái sử dụng khối đã có (`site-header`, `site-footer`, class trong `style/style.css`) trước khi viết markup mới.
 
 Class đặt trên khối cha. Không rải class xuống từng lớp, và không đặt class lên phần tử cuối khi cha đã đủ để chọn nó. CSS viết từ cha: `.info a`, `.social span`.
+
+Hai thẻ giống nhau đứng cạnh nhau thì mỗi thẻ một class. Không để hai `span` (hoặc hai thẻ cùng loại) không class trong một cha. Không chọn chúng bằng `:first-child`, `:nth-child`, `span + span`. Thẻ khác loại, hoặc chỉ một thẻ con, thì không thêm class. Class mới không trùng tên class đã có (`line`, `mark`, `num`, `item`, `role`): tên trùng bị rule cũ đè.
 
 Mỗi `<div>` phải có class, kể cả class rỗng `class=""`. Không để `<div>` trống class khi cha đã chọn được nó. CSS viết từ class đó, không viết selector `div` trần.
 
@@ -53,4 +55,28 @@ Mỗi trang một `h1`. Heading còn lại chỉ `h2`. Không dùng `h3`, `h4`, 
 
 ```css
 .info span { color: #334155; }
+```
+
+```html
+<!-- ❌ hai span không class, CSS chọn theo thứ tự -->
+<div class="rank">
+  <span>#76</span>
+  <span>Trong xếp hạng <span>(2025)</span></span>
+</div>
+
+<!-- ✅ mỗi thẻ giống nhau một class -->
+<div class="rank">
+  <span class="score">#76</span>
+  <span class="desc">Trong xếp hạng <span class="src">(2025)</span></span>
+</div>
+```
+
+```css
+/* ❌ */
+.rank > span:first-child { font-size: 48px; }
+.rank > span + span { font-size: 16px; }
+
+/* ✅ */
+.rank .score { font-size: 48px; }
+.rank .desc { font-size: 16px; }
 ```
