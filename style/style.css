@@ -5221,18 +5221,31 @@ body>*+* {
   }
 
   .degrees {
-    padding: 30px 0;
+    padding: 30px 0 0 0;
   }
-
+.side .btn {
+  display: none;
+}
   .degrees .title {
     font-size: 25px;
   }
 
   .degrees .bar span {
-    font-size: 14px;
+    font-size: 12px;
   }
-  .degrees .bar .cap{
+  .degrees.split .head {
+    margin-bottom: 0;
+}
+
+  .degrees.split .title {
+    margin-bottom: 24px;
+  }
+  .degrees .bar .cap {
     display: none;
+  }
+
+  .degrees .bar {
+    padding: 15px;
   }
 
   .degrees .head .col-lg-4 {
@@ -5347,9 +5360,11 @@ body>*+* {
   .partners {
     padding: 30px 0;
   }
-.phases{
-  gap: 20px;
-}
+
+  .phases {
+    gap: 20px;
+  }
+
   .partners .school {
     margin-bottom: 28px;
   }
@@ -5740,7 +5755,8 @@ body>*+* {
   .article {
     padding: 30px 0 64px;
   }
-  .meet.related .nav{
+
+  .meet.related .nav {
     display: none;
   }
 
@@ -5751,9 +5767,12 @@ body>*+* {
     display: flex;
     overflow-x: scroll;
   }
-  .article .crumb  a ,.article .crumb  span{
+
+  .article .crumb a,
+  .article .crumb span {
     white-space: nowrap;
   }
+
   .article h1 {
     margin-bottom: 16px;
     font-size: 24px;
@@ -6063,9 +6082,11 @@ body>*+* {
     line-height: 20px;
     overflow-x: scroll;
   }
+
   .hero-content .breadcrumb * {
     white-space: nowrap;
-}
+  }
+
   .hero-content h1 {
     margin: 0;
     font-size: 18px;
@@ -6348,9 +6369,13 @@ body>*+* {
     margin-top: 16px;
     display: none;
   }
-  .why .item.note .copy .src ,.why .item.note .copy .text, .why .item.grant .copy .text, .why .item.save .copy .text{
+
+  .why .item.note .copy .src,
+  .why .item.note .copy .text,
+  .why .item.grant .copy .text,
+  .why .item.save .copy .text {
     font-size: 14px;
-}
+  }
 
   .latest>.container>.row>div {
     margin-bottom: 24px;
@@ -6410,12 +6435,15 @@ body>*+* {
     font-size: 18px;
     line-height: 26px;
   }
-  .latest .title .title-red{
+
+  .latest .title .title-red {
     display: block;
   }
+
   .contact .place span {
     font-size: 14px;
-}
+  }
+
   .ask form h2 {
     margin-bottom: 24px;
     font-size: 20px;
@@ -6445,29 +6473,53 @@ body>*+* {
   }
 
   .reason.flinders .title {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
+  }
+
+  .reason.flinders .panel::after {
+    content: none;
   }
 
   .reason.flinders .stat .score {
-    font-size: 48px;
+    margin-bottom: 4px;
+    font-size: 36px;
   }
 
   .reason.flinders .stat .label {
     max-width: none;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .reason.flinders .stats,
   .reason.flinders .stats.over {
-    gap: 24px 32px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .reason.flinders .photo {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 20px;
   }
 
   .reason.flinders .photo .container {
-    top: 16px;
+    position: static;
+    margin-bottom: 24px;
   }
 
   .reason.flinders .sheet {
     margin-top: -48px;
+  }
+
+  .reason.flinders .perk .icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+  }
+
+  .reason.flinders .perk .icon img {
+    max-width: 48px;
   }
 
   .reason.macq .lead {
@@ -6492,7 +6544,10 @@ body>*+* {
     font-size: 15px;
     line-height: 22px;
   }
- 
+
+  .degrees .bar .go {
+    display: none;
+  }
 
   .reason.macq .notes .src,
   .reason.macq .stat .src {
@@ -6929,7 +6984,8 @@ body>*+* {
   .partners .school>.badge {
     font-size: 10px;
   }
+
   .site-footer .info li {
     font-size: 12px;
-}
+  }
 }
