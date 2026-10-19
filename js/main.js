@@ -106,6 +106,28 @@ $(".alumni .board .next").on("click", function () {
   $alum.trigger("next.owl.carousel");
 });
 
+var $tales = $(".stories .owl-carousel");
+if ($tales.length) {
+  function talePad(n) {
+    return (n < 10 ? "0" : "") + n;
+  }
+  $tales.owlCarousel({
+    items: 1,
+    dots: false,
+    nav: false,
+    smartSpeed: 450
+  }).on("changed.owl.carousel", function (e) {
+    if (!e.item) return;
+    $(".stories .count").text(talePad(e.item.index + 1) + "/" + talePad(e.item.count));
+  });
+  $(".stories .prev").on("click", function () {
+    $tales.trigger("prev.owl.carousel");
+  });
+  $(".stories .next").on("click", function () {
+    $tales.trigger("next.owl.carousel");
+  });
+}
+
 var $story = $(".journey .owl-carousel");
 if ($story.length) {
   var storyCards = $story.children(".alum").clone();
@@ -244,22 +266,33 @@ if ($facility.length) {
   facilityRows();
   $(".facility").on("click", ".shot", function () {
     var src = $(this).find("img").attr("src");
+    var video = this.getAttribute("data-video");
     var items = [];
     var start = 0;
     var seen = {};
-    $facility.find(".owl-item:not(.cloned) img").each(function () {
-      var file = this.getAttribute("src");
-      if (seen[file]) return;
-      seen[file] = 1;
-      items.push({ src: file });
+    var photos = true;
+    $facility.find(".owl-item:not(.cloned) .shot").each(function () {
+      var file = $(this).find("img").attr("src");
+      var clip = this.getAttribute("data-video");
+      var key = clip || file;
+      if (seen[key]) return;
+      seen[key] = 1;
+      if (clip) {
+        photos = false;
+        items.push({ src: clip, thumb: file, thumbSrc: file });
+      } else {
+        items.push({ src: file, thumbSrc: file });
+      }
     });
-    items.sort(function (a, b) {
-      return a.src.localeCompare(b.src, undefined, { numeric: true });
-    });
+    if (photos) {
+      items.sort(function (a, b) {
+        return a.src.localeCompare(b.src, undefined, { numeric: true });
+      });
+    }
     $.each(items, function (i, item) {
-      if (item.src === src) start = i;
+      if ((video || src) === item.src) start = i;
     });
-    $.fancybox.open(items, { loop: true }, start);
+    Fancybox.show(items, { startIndex: start });
   });
 }
 var $overview = $(".overview");
