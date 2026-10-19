@@ -19,5 +19,5 @@ function part(tag, markup, src) {
 
 // Nạp header và footer trước khi trang chạy jQuery.
 var dir = new URL("./", document.currentScript.src);
-document.write('<script src="' + new URL("header.html?v=lang1", dir).href + '"><\/script>');
+document.write('<script src="' + new URL("header.html", dir).href + '"><\/script>');
 document.write('<script src="' + new URL("footer.html?v=links2", dir).href + '"><\/script>');

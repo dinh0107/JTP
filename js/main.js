@@ -54,6 +54,32 @@ $(".leaders .pager .next").on("click", function () {
   $lead.trigger("next.owl.carousel");
 });
 
+// Học bổng trang chủ: dưới 992px gom thành một slide, màn lớn trả về lưới.
+var $grants = $(".scholar:not(.list) > .container > .row");
+if ($grants.length) {
+  function grantSlide() {
+    var narrow = window.innerWidth < 992;
+    var on = $grants.hasClass("owl-loaded");
+    if (narrow === on) return;
+    if (narrow) {
+      $grants.addClass("owl-carousel").owlCarousel({
+        items: 1,
+        margin: 16,
+        loop: true,
+        dots: true,
+        nav: false,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+      });
+      return;
+    }
+    $grants.trigger("destroy.owl.carousel").removeClass("owl-carousel owl-loaded owl-drag");
+  }
+  grantSlide();
+  $(window).on("resize", grantSlide);
+}
+
 // Slider thẻ chương trình trong tab Song bằng.
 $(".programs .owl-carousel").owlCarousel({
   items: 2,
@@ -335,6 +361,30 @@ if ($overview.length) {
   });
 }
 
+// Mở menu trên màn nhỏ hơn 992px. Đóng khi bấm một link dẫn trang.
+$(".site-header .nav-toggle").on("click", function (e) {
+  e.stopPropagation();
+  var open = !$(".site-header").hasClass("open");
+  $(".site-header").toggleClass("open", open);
+  $(this).find("i").attr("class", open ? "fa-solid fa-xmark" : "fa-solid fa-bars");
+});
+
+function closeNav() {
+  $(".site-header").removeClass("open");
+  $(".site-header .nav-toggle i").attr("class", "fa-solid fa-bars");
+}
+
+$(".site-header nav").on("click", "a:not(.lang)", function () {
+  if (window.innerWidth >= 992) return;
+  closeNav();
+});
+
+$(".site-header").on("click", function (e) {
+  if (window.innerWidth >= 992 || !$(this).hasClass("open")) return;
+  if ($(e.target).closest(".brand, nav").length) return;
+  closeNav();
+});
+
 // Menu ngôn ngữ: bấm VIE/UK để mở, chọn mục thì đổi cờ và chữ trên nút, bấm ra ngoài thì đóng.
 $(".site-header .lang").on("click", function (e) {
   e.preventDefault();
@@ -347,16 +397,18 @@ $(".site-header .langs").on("click", function (e) {
 });
 
 $(".site-header .langs").on("click", ".choice", function () {
-  var $choice = $(this);
-  var code = $.trim($choice.text());
-  var src = $choice.find("img").attr("src");
-  $choice.addClass("on").siblings().removeClass("on");
-  var $lang = $choice.closest("li").children(".lang");
-  $lang.children("img").eq(0).attr("src", src);
-  $lang.contents().filter(function () {
-    return this.nodeType === 3 && $.trim(this.nodeValue);
-  })[0].nodeValue = code;
-  $choice.parent().removeClass("on");
+  var code = $.trim($(this).text());
+  var src = $(this).find("img").attr("src");
+  $(".site-header .langs .choice").each(function () {
+    $(this).toggleClass("on", $.trim($(this).text()) === code);
+  });
+  $(".site-header .lang").each(function () {
+    $(this).children("img").first().attr("src", src);
+    $(this).contents().filter(function () {
+      return this.nodeType === 3 && $.trim(this.nodeValue);
+    })[0].nodeValue = code;
+  });
+  $(".site-header .langs").removeClass("on");
 });
 
 $(document).on("click", function () {
