@@ -4603,6 +4603,7 @@ body>*+* {
   font-size: 40px;
   font-weight: 700;
   line-height: 1.3;
+  margin-top: 20px;
   white-space: nowrap;
 }
 
@@ -5129,7 +5130,7 @@ body>*+* {
   .latest .title,
   .route .title,
   .faq .title {
-    font-size: 25px;
+    font-size: 22px;
   }
 
   .overview .item,
@@ -5166,7 +5167,6 @@ body>*+* {
   }
 
   .degrees .title {
-    max-width: 230px;
     font-size: 25px;
   }
 
@@ -6001,9 +6001,13 @@ body>*+* {
   .hero-content .breadcrumb {
     padding: 0;
     font-size: 14px;
+    flex-wrap: nowrap;
     line-height: 20px;
+    overflow-x: scroll;
   }
-
+  .hero-content .breadcrumb * {
+    white-space: nowrap;
+}
   .hero-content h1 {
     margin: 0;
     font-size: 18px;
@@ -6226,7 +6230,7 @@ body>*+* {
   }
 
   .facility {
-    padding-top: 64px;
+    padding-top: 30px;
   }
 
   .steps .title span {
@@ -6244,6 +6248,11 @@ body>*+* {
 
   .facility .copy {
     margin-right: 0;
+  }
+
+  .facility .copy>span {
+    font-size: 14px;
+    line-height: 22px;
   }
 
   .facility .nav,
@@ -6370,7 +6379,7 @@ body>*+* {
   }
 
   .reason .panel {
-    padding: 64px 0 96px;
+    padding: 30px 0 96px;
   }
 
   .reason.flinders .panel {
@@ -6403,46 +6412,233 @@ body>*+* {
     margin-top: -48px;
   }
 
+  .reason.macq .lead {
+    margin: 24px 0;
+  }
+
   .reason.macq .lead .score {
-    font-size: 64px;
+    font-size: 56px;
+  }
+
+  .reason.macq .lead .label {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .reason.macq .notes .col-md-6 {
+    margin-bottom: 16px;
+  }
+
+  .reason.macq .notes .name,
+  .reason.macq .notes .text {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  .overview .title{
+    display: flex;
+    gap: 10px;
+  }
+
+  .reason.macq .notes .src,
+  .reason.macq .stat .src {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .reason.macq .lock {
+    max-width: 264px;
+    margin: 16px 0 0;
+  }
+
+  .reason.macq .lock .world {
+    gap: 9px;
+    height: auto;
+  }
+
+  .reason.macq .lock .score {
+    font-size: 52px;
+    line-height: 1;
+  }
+
+  .reason.macq .lock .where {
+    font-size: 26px;
+  }
+
+  .reason.macq .photo {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .reason.macq .photo::after {
+    content: none;
+  }
+
+  .reason.macq .photo .container {
+    position: static;
+    padding-top: 32px;
+  }
+
+  .reason.macq .stats .col-md-6 {
+    margin-bottom: 24px;
   }
 
   .reason.macq .stat .score {
-    font-size: 36px;
+    margin-bottom: 4px;
+    font-size: 28px;
+  }
+
+  .reason.macq .stat .label {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .reason.macq .stat .label,
+  .reason.macq .stat .src {
+    max-width: 260px;
+  }
+
+  .reason.macq .stat .src {
+    margin-top: 4px;
+  }
+
+  .reason.macq .stat .part {
+    display: inline;
+  }
+
+  .reason.macq .stat .part::before {
+    content: " ";
   }
 
   .reason.macq .sheet {
     margin-top: -48px;
   }
 
+  .reason.macq .perk .icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+  }
+
+  .reason.macq .perk .icon img {
+    max-width: 48px;
+  }
+
+  .reason.macq .perk>.name {
+    max-width: 180px;
+  }
+
+  .reason .panel .container {
+    max-width: 100%;
+  }
+
+  .reason .title {
+    margin-bottom: 24px;
+    font-size: 25px;
+  }
+
+
   .reason .intro {
     display: block;
+    margin-bottom: 32px;
+    padding: 0 0 32px;
   }
 
   .reason .copy {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
+  }
+
+  .reason .copy>.name {
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+
+  .reason .copy>.text,
+  .reason .rank .desc,
+  .reason .perk>.text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .reason .copy>.text {
+    text-align: left;
   }
 
   .reason .counts {
-    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .reason .count>.num {
+    font-size: 36px;
+    line-height: 1;
+  }
+
+  .reason .count>.label {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .reason .ranks .row {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+
+  .reason .ranks .row>div {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 24px;
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .reason .rank .score {
+    margin-bottom: 4px;
+    font-size: 28px;
+  }
+
+  .reason .rank .desc {
+    font-size: 13px;
+    line-height: 20px;
   }
 
   .reason .shot {
-    position: static;
+    position: absolute;
     width: 100%;
-    margin-top: 32px;
+    margin: 0 0 24px;
   }
 
   .reason .sheet {
     margin-top: -48px;
-    margin-bottom: 48px;
-    padding: 20px;
+    margin-bottom: 0;
+    padding: 12px;
     border-radius: 24px;
+  }
+
+  .reason .perk {
+    padding: 16px 12px;
+  }
+
+  .reason .perk img {
+    width: 48px;
+    margin-bottom: 12px;
+  }
+
+  .reason .perk>.name {
+    max-width: 272px;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+
+  .reason .perk>.text {
+    max-width: 256px;
   }
 
   .reason .sheet .row>div,
   .reason .sheet .row>div:nth-last-child(-n + 3) {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 
   .reason .sheet .row>div:last-child {
