@@ -53,31 +53,39 @@ $(".leaders .pager .prev").on("click", function () {
 $(".leaders .pager .next").on("click", function () {
   $lead.trigger("next.owl.carousel");
 });
-// Học bổng trang chủ: dưới 992px gom thành một slide, màn lớn trả về lưới.
-var $grants = $(".scholar:not(.list) > .container > .row");
-if ($grants.length) {
-  function grantSlide() {
+// Dưới 992px gom hàng thẻ thành slide, màn lớn trả về lưới.
+function slideBelow992($row, options) {
+  if (!$row.length) return;
+  function toggle() {
     var narrow = window.innerWidth < 992;
-    var on = $grants.hasClass("owl-loaded");
-    if (narrow === on) return;
+    if (narrow === $row.hasClass("owl-loaded")) return;
     if (narrow) {
-      $grants.addClass("owl-carousel").owlCarousel({
-        items: 1,
-        margin: 16,
-        loop: true,
-        dots: true,
-        nav: false,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-      });
+      $row.addClass("owl-carousel").owlCarousel(options);
       return;
     }
-    $grants.trigger("destroy.owl.carousel").removeClass("owl-carousel owl-loaded owl-drag");
+    $row.trigger("destroy.owl.carousel").removeClass("owl-carousel owl-loaded owl-drag");
   }
-  grantSlide();
-  $(window).on("resize", grantSlide);
+  toggle();
+  $(window).on("resize", toggle);
 }
+
+slideBelow992($(".scholar:not(.list) > .container > .row"), {
+  items: 1,
+  margin: 16,
+  loop: true,
+  dots: true,
+  nav: false,
+  autoplay: true,
+  autoplayTimeout: 5000,
+  autoplayHoverPause: true,
+});
+
+slideBelow992($(".degrees > .container > .row:not(.head)"), {
+  margin: 16,
+  dots: false,
+  nav: false,
+  responsive: { 0: { items: 1.15 }, 768: { items: 2 } },
+});
 
 // Slider thẻ chương trình trong tab Song bằng.
 $(".programs .owl-carousel").owlCarousel({

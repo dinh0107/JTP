@@ -2043,7 +2043,17 @@ body>*+* {
 
 
 .article .body img {
+  display: block;
   max-width: 100%;
+  margin: 8px 0 24px;
+}
+
+.article .text {
+  display: block;
+}
+
+.article .text+.text {
+  margin-top: 16px;
 }
 
 .article .share {
@@ -4844,7 +4854,7 @@ body>*+* {
   }
 
   .route {
-    padding: 80px 0 72px;
+    padding: 30px 0;
   }
 
   .route .title {
@@ -5064,6 +5074,38 @@ body>*+* {
   .partners .school img {
     width: 100%;
   }
+
+  .pages a {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    line-height: 32px;
+  }
+
+  .pages .prev a,
+  .pages .next a {
+    line-height: 30px;
+  }
+
+  .pages li+li,
+  .pages .dots,
+  .pages .dots+li,
+  .pages .next {
+    margin-left: 8px;
+  }
+
+  .pages .prev {
+    margin-right: 0;
+  }
+
+  .pages .dots a {
+    width: 32px;
+    line-height: 32px;
+  }
+
+  .pages .dots img {
+    width: 20px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5074,7 +5116,7 @@ body>*+* {
 
 @media (max-width: 991px) {
   .overview {
-    padding: 64px 0;
+    padding: 30px 0;
   }
 
   .overview .side {
@@ -5082,20 +5124,57 @@ body>*+* {
     margin-bottom: 32px;
   }
 
-  .overview .title {
-    font-size: 32px;
+  .overview .title,
+  .facility .title,
+  .latest .title,
+  .route .title,
+  .faq .title {
+    font-size: 25px;
+  }
+
+  .overview .item,
+  .faq .item {
+    margin-bottom: 12px;
+    padding: 16px 20px;
+  }
+
+  .overview .head>.q,
+  .faq .head>.q {
+    max-width: 230px;
+    margin-right: 16px;
+    font-size: 15px;
+  }
+
+  .overview .more,
+  .faq .more {
+    flex: 0 0 32px;
+    width: 32px;
+    margin-left: auto;
+  }
+
+  .latest .title {
+    max-width: 240px;
+  }
+
+  .overview .more img,
+  .faq .more img {
+    width: 32px;
   }
 
   .degrees {
-    padding: 64px 0;
+    padding: 30px 0;
   }
 
   .degrees .title {
-    font-size: 32px;
+    max-width: 230px;
+    font-size: 25px;
   }
 
   .degrees .bar span {
-    font-size: 20px;
+    font-size: 14px;
+  }
+  .degrees .bar .cap{
+    display: none;
   }
 
   .degrees .head .col-lg-4 {
@@ -5116,16 +5195,50 @@ body>*+* {
     margin-bottom: 24px;
   }
 
+  .degrees .owl-carousel {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .degrees .owl-item .col-md-6 {
+    max-width: none;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .degrees .owl-item .degree {
+    margin-bottom: 0;
+  }
+
   .contact {
-    padding: 64px 0;
+    padding: 40px 0;
   }
 
   .contact h1 {
-    font-size: 36px;
+    margin-bottom: 12px;
+    font-size: 25px;
+    line-height: 36px;
   }
 
   .contact .sub {
-    font-size: 20px;
+    font-size: 18px;
+  }
+
+  .contact .line {
+    margin: 24px 0;
+  }
+
+  .contact .item {
+    margin-bottom: 24px;
+  }
+
+  .contact .copy a {
+    font-size: 16px;
+    overflow-wrap: anywhere;
+  }
+
+  .contact .social {
+    margin-bottom: 24px;
   }
 
   .contact .place {
@@ -5137,7 +5250,12 @@ body>*+* {
   }
 
   .contact .place .city {
-    font-size: 32px;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .contact .goto {
+    font-size: 16px;
   }
 
   .about-lead {
@@ -5153,8 +5271,8 @@ body>*+* {
     margin-bottom: 40px;
   }
 
-  .about-lead .stats [class*="col-"]+[class*="col-"] {
-    margin-top: 24px;
+  .about-lead .stats [class*="col-"] {
+    margin-bottom: 24px;
   }
 
   .about-lead .acts .btn {
@@ -5169,17 +5287,29 @@ body>*+* {
   }
 
   .partners {
-    padding: 64px 0;
+    padding: 30px 0;
   }
-
+.phases{
+  gap: 20px;
+}
   .partners .school {
     margin-bottom: 28px;
   }
 
+  .partners .school>.badge {
+    padding: 4px 8px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
   .partners .school a {
     margin-top: 12px;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 24px;
+  }
+
+  .partners .school a+span {
+    font-size: 12px;
   }
 
   .journey {
@@ -5211,8 +5341,42 @@ body>*+* {
     text-align: left;
   }
 
+  .journey .nav-tabs {
+    display: flex;
+    width: 100%;
+  }
+
+  .journey .nav-tabs li {
+    width: 33.33%;
+    padding: 2px;
+  }
+
+  .journey .nav-tabs span {
+    display: block;
+    padding: 8px 4px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
   .journey .board>span {
-    top: 160px;
+    top: 88px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .journey .board>span img {
+    width: 18px;
+  }
+
+  .journey .board .prev {
+    left: 8px;
+  }
+
+  .journey .board .next {
+    right: 8px;
   }
 
   .dav {
@@ -5412,7 +5576,7 @@ body>*+* {
   }
 
   .meet .post:not(.sm) {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .meet .list {
@@ -5425,20 +5589,37 @@ body>*+* {
   }
 
   .hero-page+.meet {
-    padding-top: 64px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .hero-page+.meet .head {
+    margin-bottom: 24px;
   }
 
   .hero-page+.meet .list .line {
-    margin: 16px 0;
+    margin: 12px 0;
   }
 
   .meet.more {
-    padding-bottom: 64px;
+    padding-bottom: 48px;
+  }
+
+  .meet.more .head {
+    margin-bottom: 24px;
+  }
+
+  .meet.more .head .col-lg-4 {
+    margin-bottom: 16px;
   }
 
   .meet.more form {
-    margin-top: 24px;
+    margin-top: 0;
     text-align: left;
+  }
+
+  .meet.more .row>div {
+    margin-bottom: 0;
   }
 
   .meet.more .sort,
@@ -5456,30 +5637,146 @@ body>*+* {
     flex: 1;
   }
 
-  .article {
-    padding: 40px 0 64px;
+  .meet.more.admit .head .col-lg-5 {
+    margin-bottom: 16px;
   }
 
+  .meet.more.admit>.container>.row:not(.head)>[class*="col-"] {
+    margin-bottom: 0;
+  }
+
+  .meet.more.admit .post .row {
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .meet.more.admit .post .pic {
+    flex: 0 0 calc(46% - 8px);
+    width: calc(46% - 8px);
+    max-width: calc(46% - 8px);
+    margin-right: 16px;
+    margin-bottom: 0;
+  }
+
+  .meet.more.admit .post .copy {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .meet.more.admit .post .date {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .meet.more.admit .post .copy a {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 24px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .article {
+    padding: 30px 0 64px;
+  }
+  .meet.related .nav{
+    display: none;
+  }
+
+  .article .crumb {
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    overflow-x: scroll;
+  }
+  .article .crumb  a ,.article .crumb  span{
+    white-space: nowrap;
+  }
   .article h1 {
-    font-size: 32px;
+    margin-bottom: 16px;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .article .meta span {
+    font-size: 14px;
+  }
+
+  .article .meta .bar {
+    margin: 0 8px;
+  }
+
+  .article .meta .bar+span {
+    margin-left: 8px;
   }
 
   .article .body,
   .article .side {
-    padding-top: 32px;
+    padding-top: 24px;
   }
 
   .article .side {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
     position: static;
+    gap: 16px;
+  }
+
+  .article .side img,
+  .article .side img:last-child {
+    width: calc(50% - 8px);
+    margin-bottom: 0;
   }
 
   .article .share {
     display: block;
+    margin-top: 8px;
   }
 
   .article .icons {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     margin-top: 16px;
+  }
+
+  .article .icons span {
+    flex: 0 0 100%;
+    font-size: 16px;
+  }
+
+  .article .icons img,
+  .article .icons span+img {
+    width: 44px;
+    margin: 12px 12px 0 0;
+  }
+
+  .meet.related .head {
+    margin-bottom: 24px;
+  }
+
+  .meet.related .head .row {
+    align-items: center;
+  }
+
+  .meet.related .head .col-lg-8 {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .meet.related .head .col-lg-4 {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+    margin-bottom: 0;
+    padding-left: 0;
   }
 
   .ask {
@@ -5687,7 +5984,7 @@ body>*+* {
   }
 
   .title {
-    font-size: 24px;
+    font-size: 25px;
   }
 
   .banner-content {
@@ -5720,7 +6017,8 @@ body>*+* {
   .banner-content .col-12 {
     padding-left: 15px;
   }
-  .partners .title{
+
+  .partners .title {
     margin: 0;
   }
 
@@ -5744,30 +6042,117 @@ body>*+* {
     font-size: 32px;
     text-align: center;
   }
-  .partners .head>span{
+
+  .partners .head>span {
     font-size: 14px;
   }
 
   .why {
-    padding: 64px 0;
+    padding: 30px 0;
   }
 
-  .why .title,
+  .why .title {
+    font-size: 25px;
+  }
+
+  .why>.container>.title {
+    max-width: 250px;
+  }
+
   .why .who h2 {
-    font-size: 32px;
+    font-size: 20px;
+  }
+
+  .why .item.green .copy .name {
+    max-width: 200px;
+  }
+
+  .why .item.blue .text {
+    max-width: 150px;
+  }
+
+  .why .item.note .copy .src,
+  .why .item.note .copy .text+.text,
+  .why .item.grant .copy .name {
+    max-width: 180px;
   }
 
   .why .mark {
     width: 160px;
   }
 
-  .why .board {
-    display: block;
+  .why .item.green>span,
+  .why .item.blue .num,
+  .why .item.cream .num {
+    font-size: 40px;
   }
 
-  .why .board>.item,
-  .why .item.rail .item {
-    margin-bottom: 12px;
+  .why .item.mint .num,
+  .why .item.city .place {
+    font-size: 36px;
+  }
+
+  .why .item.mint .word,
+  .why .item.green .copy .name,
+  .why .item.note .copy .name,
+  .why .item.grant .copy .name,
+  .why .item.save .copy .name {
+    font-size: 16px;
+  }
+
+  .why .item.mint .when {
+    font-size: 14px;
+  }
+
+  .why .cell>.num {
+    font-size: 28px;
+  }
+
+  .why .cell .unit {
+    font-size: 14px;
+  }
+
+  .why .item.city span {
+    font-size: 20px;
+  }
+
+  .why .item.blue .kicker,
+  .why .item.cream .kicker,
+  .why .item.blue .text,
+  .why .item.cream .text,
+  .why .item.blue .copy:has(.src),
+  .why .item.cream .copy:has(.src),
+  .why .item.grant .copy .text,
+  .why .item.grant .copy .src {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .why .board {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .why .board>.item {
+    flex: 0 0 100%;
+    min-width: 0;
+    margin-bottom: 0;
+  }
+
+  .why .board>.item.kelburn,
+  .why .board>.item.pipitea,
+  .why .board>.item.tearo {
+    flex: 1 1 0;
+  }
+
+  .why .item.kelburn span,
+  .why .item.pipitea span,
+  .why .item.tearo span {
+    bottom: 8px;
+    left: 8px;
+    padding: 4px 10px;
+    font-size: 14px;
   }
 
   .why .item.city {
@@ -5775,22 +6160,51 @@ body>*+* {
   }
 
   .why .item.lime {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
   }
 
   .why .cell {
-    margin-top: 16px;
     padding-left: 0;
     border-left: 0;
   }
 
   .why .cell:first-child {
-    margin-top: 0;
+    grid-column: 1 / -1;
+  }
+
+  .why .cell>.label {
+    max-width: 112px;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: normal;
   }
 
   .why .item.rail {
-    display: block;
+    gap: 12px;
     height: auto;
+  }
+
+  .why .item.note,
+  .why .item.grant,
+  .why .item.save {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .why .ico {
+    flex: 0 0 40px;
+    width: 40px;
+    margin: 0 12px 0 0;
+  }
+
+  .why .item.note .copy,
+  .why .item.grant .copy,
+  .why .item.save .copy {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .why .voice {
@@ -5865,7 +6279,11 @@ body>*+* {
 
   .latest .head .btn {
     margin-top: 16px;
+    display: none;
   }
+  .why .item.note .copy .src ,.why .item.note .copy .text, .why .item.grant .copy .text, .why .item.save .copy .text{
+    font-size: 14px;
+}
 
   .latest>.container>.row>div {
     margin-bottom: 24px;
@@ -5889,12 +6307,66 @@ body>*+* {
     gap: 32px;
   }
 
-  .faq {
-    padding: 64px 0;
+  .route .num {
+    gap: 4.35cqi;
+  }
+
+  .route .num .number {
+    font-size: 54.35cqi;
+    line-height: 43.48cqi;
+  }
+
+  .route .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px 16px;
+  }
+
+  .route .stat>.label {
+    font-size: 14px;
+  }
+
+  .route .note>.name {
+    font-size: 18px;
+  }
+
+  .route .note>.text,
+  .route .note li,
+  .overview .copy span,
+  .overview .body span,
+  .faq .body span {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .latest .post .copy a {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .latest .title .title-red{
+    display: block;
+  }
+  .contact .place span {
+    font-size: 14px;
+}
+  .ask form h2 {
+    margin-bottom: 24px;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .route .stat>.val {
+    margin-top: 4px;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .faq .title {
+    margin-bottom: 24px;
   }
 
   .faq .col-lg-6:first-child .item:last-child {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 
   .reason .panel {
@@ -6193,5 +6665,9 @@ body>*+* {
   .hero-page img {
     height: 200px;
     object-fit: cover;
+  }
+
+  .partners .school>.badge {
+    font-size: 10px;
   }
 }
