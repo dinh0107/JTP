@@ -1,3 +1,4 @@
+// Cắt header/footer ra khỏi file component, sửa link tương đối, gắn vào thẻ site-header / site-footer.
 function part(tag, markup, src) {
   markup = markup.replace(/^\s*-->\s*/, "").replace(/\s*<!--\s*$/, "");
   var node = new DOMParser().parseFromString(markup, "text/html").querySelector("header, footer");
@@ -16,6 +17,7 @@ function part(tag, markup, src) {
   });
 }
 
+// Nạp header và footer trước khi trang chạy jQuery.
 var dir = new URL("./", document.currentScript.src);
-document.write('<script src="' + new URL("header.html?v=links2", dir).href + '"><\/script>');
+document.write('<script src="' + new URL("header.html?v=lang1", dir).href + '"><\/script>');
 document.write('<script src="' + new URL("footer.html?v=links2", dir).href + '"><\/script>');

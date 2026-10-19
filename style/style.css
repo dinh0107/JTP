@@ -162,11 +162,16 @@ body {
 .site-header li.tool+li.tool {
   margin-left: 16px;
 }
-
+.tools-line{
+  width: 1px;
+  height: 20px;
+  background: var(--white);
+}
 .site-header .tool span {
   width: 1px;
   height: 20px;
   background: var(--white);
+  display: block;
 }
 
 .site-header .lang {
@@ -179,9 +184,61 @@ body {
   line-height: 22px;
 }
 
+.lang img{
+  width: 20px;
+height: 20px;
+}
+
 .site-header .lang img:first-child {
   border-radius: 50%;
   box-shadow: 0 0 4px rgb(0 0 0 / 25%);
+}
+
+.site-header li.tool {
+  position: relative;
+}
+
+.site-header .langs {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 6%);
+  overflow: hidden;
+}
+
+.site-header .langs.on {
+  display: block;
+}
+
+.site-header .langs .choice {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 16px;
+  color: #10375c;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.16px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.site-header .langs .choice + .choice {
+  margin-top: 6px;
+}
+
+.site-header .langs .choice.on {
+  background: #eaeaea;
+}
+
+.site-header .langs .choice img {
+  width: 20px;
+  border-radius: 50%;
 }
 
 .site-header .cta {
@@ -905,7 +962,8 @@ body {
 }
 
 
-.grant>span {
+.grant>span,
+.post.grant>span {
   position: absolute;
   top: 20px;
   left: 24px;
@@ -916,6 +974,7 @@ body {
   font-size: 16px;
   font-weight: var(--weight-bold);
   line-height: 24px;
+  text-transform: none;
   z-index: 1;
 }
 
@@ -951,7 +1010,7 @@ body {
   color: var(--secondary);
 }
 
-.grant .copy>span,
+.grant .copy>span:not(.kicker):not(.name),
 .grant .text {
   margin-top: 8px;
   color: rgb(16 55 92 / 70%);
@@ -959,38 +1018,7 @@ body {
   font-weight: var(--weight-regular);
   line-height: 24px;
   letter-spacing: -0.16px;
-}
-
-.grant .copy .kicker,
-.grant .copy .name {
-  display: block;
-  text-decoration: none;
-}
-
-.grant .copy .kicker {
-  margin-top: 0;
-  color: var(--secondary);
-  font-size: 14px;
-  font-weight: var(--weight-semibold);
-  line-height: 22px;
-  text-transform: uppercase;
-}
-
-.grant .copy .name {
-  margin-top: 8px;
-  color: var(--text);
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.grant .copy .name em {
-  font-style: normal;
-  color: var(--secondary);
-}
-
-.grant .pic img {
-  width: 100%;
+  text-transform: none;
 }
 
 .grant ul {
@@ -1025,8 +1053,18 @@ body {
   margin-bottom: 40px;
 }
 
-.scholar.list .grant .copy {
-  padding: 20px 24px 24px;
+.post.grant .copy {
+  padding: 0 24px 24px;
+}
+
+.post.grant .name {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.post.grant .name em {
+  font-style: normal;
+  color: var(--secondary);
 }
 
 .leaders {
@@ -1514,7 +1552,6 @@ body {
 
 .post img {
   width: 100%;
-  border-radius: 8px;
 }
 
 .post .copy a,
@@ -1542,10 +1579,12 @@ body {
 .post .pic {
   overflow: hidden;
   margin-bottom: 16px;
-  border-radius: 8px;
+  border-radius: 8px ;
   position: relative;
 }
-
+.post.grant .pic {
+  border-radius: 16px 16px  0 0 ;
+}
 .post .pic::after {
   content: "";
   position: absolute;

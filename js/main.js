@@ -1,3 +1,4 @@
+// Tô dần từng chữ khi cuộn tới câu trích campus và đoạn giới thiệu DAV.
 $(".campus .quote span, .dav .scroll > span").each(function () {
   var $box = $(this);
   var words = $box.text().trim().split(/\s+/);
@@ -23,15 +24,18 @@ $(".campus .quote span, .dav .scroll > span").each(function () {
   paint();
 });
 
+// Chạy số tăng dần. Chỉ nhận chữ là số, hậu tố nằm ở data-suffix.
 $(".counter-up").filter(function () {
   return /^[0-9,]+$/.test($(this).text());
 }).counterUp({ delay: 10, time: 1200 });
 
+// Đổi tab Song bằng / Liên kết và tab Alumni.
 $(".programs .nav-tabs a, .alumni .nav-tabs a").on("click", function (e) {
   e.preventDefault();
   $(this).tab("show");
 });
 
+// Slider đối tác trên trang chủ: đổi tiêu đề, mô tả và số trang theo slide.
 var $lead = $(".leaders .owl-carousel");
 $lead.owlCarousel({ items: 1, dots: false, nav: false }).on("changed.owl.carousel", function (e) {
   var i = e.item.index;
@@ -50,6 +54,7 @@ $(".leaders .pager .next").on("click", function () {
   $lead.trigger("next.owl.carousel");
 });
 
+// Slider thẻ chương trình trong tab Song bằng.
 $(".programs .owl-carousel").owlCarousel({
   items: 2,
   margin: 20,
@@ -63,6 +68,7 @@ $(".programs .owl-carousel").owlCarousel({
   }
 });
 
+// Kéo ngang dãy ảnh nhỏ trong thẻ chương trình.
 $(".course .thumbs").on("mousedown", function (e) {
   e.preventDefault();
   e.stopPropagation();
@@ -77,6 +83,7 @@ $(".course .thumbs").on("mousedown", function (e) {
   });
 });
 
+// Nút trước / sau của slider chương trình, không chuyển trang.
 $(".programs .pager .prev").on("click", function (e) {
   e.preventDefault();
   $(this).closest(".tab-pane").find(".owl-carousel").trigger("prev.owl.carousel");
@@ -87,6 +94,7 @@ $(".programs .pager .next").on("click", function (e) {
   $(this).closest(".tab-pane").find(".owl-carousel").trigger("next.owl.carousel");
 });
 
+// Slider hội đồng / ban trên trang chủ.
 var $alum = $(".alumni .owl-carousel");
 $alum.owlCarousel({
   margin: 24,
@@ -106,6 +114,7 @@ $(".alumni .board .next").on("click", function () {
   $alum.trigger("next.owl.carousel");
 });
 
+// Slider câu chuyện cựu sinh viên, cập nhật số 01/03.
 var $tales = $(".stories .owl-carousel");
 if ($tales.length) {
   function talePad(n) {
@@ -128,6 +137,7 @@ if ($tales.length) {
   });
 }
 
+// Hành trình cựu sinh viên: lọc theo tab, ẩn mũi tên khi thẻ không nhiều hơn số ô đang hiện.
 var $story = $(".journey .owl-carousel");
 if ($story.length) {
   var storyCards = $story.children(".alum").clone();
@@ -181,9 +191,11 @@ if ($story.length) {
     $story.trigger("next.owl.carousel");
   });
 }
+// Đổi màu chữ ô select trong form tư vấn sau khi đã chọn.
 $(".ask select").on("change", function () {
   $(this).toggleClass("set", this.value !== "");
 });
+// Slider tin liên quan ở cuối bài viết.
 var $related = $(".meet.related .board");
 if ($related.length) {
   $related.owlCarousel({
@@ -199,6 +211,7 @@ if ($related.length) {
     $related.trigger("next.owl.carousel");
   });
 }
+// Slider lời nhận xét trong khối Vì sao, chỉ đổi bằng nút và cập nhật số trang.
 var $voice = $(".why .voice .owl-carousel");
 if ($voice.length) {
   function voicePad(n) {
@@ -225,6 +238,7 @@ if ($voice.length) {
     $voice.trigger("next.owl.carousel");
   });
 }
+// Thư viện ảnh cơ sở: hai hàng, đếm trang, bấm ảnh mở Fancybox (ảnh hoặc video nếu có data-video).
 var $facility = $(".facility .owl-carousel");
 if ($facility.length) {
   function facilityPad(n) {
@@ -295,6 +309,7 @@ if ($facility.length) {
     Fancybox.show(items, { startIndex: start });
   });
 }
+// Accordion tổng quan: mở một mục hoặc mở / đóng tất cả.
 var $overview = $(".overview");
 if ($overview.length) {
   function overviewLabel() {
@@ -320,6 +335,35 @@ if ($overview.length) {
   });
 }
 
+// Menu ngôn ngữ: bấm VIE/UK để mở, chọn mục thì đổi cờ và chữ trên nút, bấm ra ngoài thì đóng.
+$(".site-header .lang").on("click", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $(this).siblings(".langs").toggleClass("on");
+});
+
+$(".site-header .langs").on("click", function (e) {
+  e.stopPropagation();
+});
+
+$(".site-header .langs").on("click", ".choice", function () {
+  var $choice = $(this);
+  var code = $.trim($choice.text());
+  var src = $choice.find("img").attr("src");
+  $choice.addClass("on").siblings().removeClass("on");
+  var $lang = $choice.closest("li").children(".lang");
+  $lang.children("img").eq(0).attr("src", src);
+  $lang.contents().filter(function () {
+    return this.nodeType === 3 && $.trim(this.nodeValue);
+  })[0].nodeValue = code;
+  $choice.parent().removeClass("on");
+});
+
+$(document).on("click", function () {
+  $(".site-header .langs").removeClass("on");
+});
+
+// Accordion câu hỏi thường gặp.
 $(".faq").each(function () {
   var $faq = $(this);
   $faq.find(".item.on").children(".body").show();
