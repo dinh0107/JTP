@@ -219,6 +219,62 @@ body>*+* {
   display: block;
 }
 
+.site-header .drop {
+  position: relative;
+}
+
+.site-header .drop::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 100%;
+  left: 0;
+  width: 280px;
+  height: 16px;
+}
+
+.site-header .drop:hover {
+  z-index: 3;
+}
+
+.site-header .menu {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 280px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 6%);
+  overflow: hidden;
+  transition: opacity 0.18s ease, visibility 0s linear 0.18s;
+}
+
+.site-header .drop:hover .menu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.18s ease, visibility 0s;
+}
+
+.site-header .menu a {
+  display: block;
+  padding: 8px 16px;
+  color: var(--brand);
+  font-size: 16px;
+  font-weight: var(--weight-semibold);
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.site-header .menu a:hover {
+  background: #eaeaea;
+}
+
 .site-header .langs .choice {
   display: flex;
   align-items: center;
@@ -5004,6 +5060,10 @@ body>*+* {
     font-size: 14px;
     line-height: 20px;
   }
+
+  .partners .school img {
+    width: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5113,7 +5173,13 @@ body>*+* {
   }
 
   .partners .school {
-    margin-bottom: 40px;
+    margin-bottom: 28px;
+  }
+
+  .partners .school a {
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .journey {
@@ -6005,6 +6071,40 @@ body>*+* {
 
   .site-header nav li.tool {
     display: none;
+  }
+
+  .site-header .drop::after {
+    content: none;
+  }
+
+  .site-header .drop:hover .menu {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .site-header .drop.on .menu {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .site-header .menu {
+    display: none;
+    position: static;
+    min-width: 0;
+    background: #f4f6f8;
+    border-radius: 0;
+    box-shadow: none;
+    transition: none;
+  }
+
+  .site-header nav li .menu a {
+    padding: 12px 24px 12px 40px;
+    border-bottom: 0;
+    font-weight: var(--weight-medium);
+    white-space: normal;
   }
 
   .site-footer {

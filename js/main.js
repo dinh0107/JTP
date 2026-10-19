@@ -53,7 +53,6 @@ $(".leaders .pager .prev").on("click", function () {
 $(".leaders .pager .next").on("click", function () {
   $lead.trigger("next.owl.carousel");
 });
-
 // Học bổng trang chủ: dưới 992px gom thành một slide, màn lớn trả về lưới.
 var $grants = $(".scholar:not(.list) > .container > .row");
 if ($grants.length) {
@@ -371,12 +370,22 @@ $(".site-header .nav-toggle").on("click", function (e) {
 
 function closeNav() {
   $(".site-header").removeClass("open");
+  $(".site-header .drop").removeClass("on");
   $(".site-header .nav-toggle i").attr("class", "fa-solid fa-bars");
 }
 
 $(".site-header nav").on("click", "a:not(.lang)", function () {
   if (window.innerWidth >= 992) return;
+  if ($(this).parent().hasClass("drop")) return;
   closeNav();
+});
+
+// Màn nhỏ: bấm Chương trình đào tạo mở danh sách. Màn lớn vẫn vào mục trên trang chủ.
+$(".site-header .drop > a").on("click", function (e) {
+  if (window.innerWidth >= 992) return;
+  e.preventDefault();
+  e.stopPropagation();
+  $(this).parent().toggleClass("on");
 });
 
 $(".site-header").on("click", function (e) {
