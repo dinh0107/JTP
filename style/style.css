@@ -4991,6 +4991,64 @@ body>*+* {
     width: 360px;
     height: 220px;
   }
+
+  .reason .title {
+    font-size: 30px;
+  }
+
+  .reason.macq .lead .score {
+    font-size: 80px;
+  }
+
+  .reason.macq .lead .label {
+    font-size: 16px;
+  }
+
+  .reason.macq .notes .name,
+  .reason.macq .notes .text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .reason.macq .notes .src {
+    font-size: 14px;
+  }
+
+  .reason.macq .lock .world {
+    align-items: baseline;
+    height: auto;
+    margin-top: 32px;
+  }
+
+  .reason.macq .lock .score {
+    font-size: 64px;
+    line-height: 1;
+  }
+
+  .reason.macq .lock .where {
+    margin-top: 0;
+    font-size: 32px;
+  }
+
+  .reason.macq .stats .col-md-6 {
+    margin-bottom: 32px;
+  }
+
+  .reason.macq .stat .score {
+    font-size: 40px;
+  }
+
+  .reason.macq .stat .label {
+    font-size: 18px;
+  }
+
+  .reason.macq .stat .src {
+    font-size: 16px;
+  }
+
+  .reason.macq .sheet {
+    margin-top: -80px;
+  }
 }
 
 @media (min-width: 992px) {
@@ -6434,10 +6492,7 @@ body>*+* {
     font-size: 15px;
     line-height: 22px;
   }
-  .overview .title{
-    display: flex;
-    gap: 10px;
-  }
+ 
 
   .reason.macq .notes .src,
   .reason.macq .stat .src {
@@ -6452,7 +6507,7 @@ body>*+* {
 
   .reason.macq .lock .world {
     gap: 9px;
-    height: auto;
+    margin-top: 8px;
   }
 
   .reason.macq .lock .score {
@@ -6786,6 +6841,7 @@ body>*+* {
   .site-footer .logos {
     gap: 16px;
     align-items: center;
+    justify-content: center;
   }
 
   .site-footer .logos img:first-child {
@@ -6825,15 +6881,20 @@ body>*+* {
 
   .site-footer .about {
     gap: 12px;
-    margin-top: 20px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgb(255 255 255 / 15%);
   }
 
   .site-footer .about span {
-    font-size: 16px;
+    font-size: 12px;
   }
 
   .site-footer .about small {
     letter-spacing: 0.4px;
+    font-size: 10px;
+    line-height: 15px;
+    text-align: center;
   }
 
   .site-footer .foot-col {
@@ -6850,7 +6911,9 @@ body>*+* {
   }
 
   .site-footer .foot-col+.foot-col {
-    margin-top: 20px;
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 24px;
   }
 
   .hero-page .hero-content {
@@ -6866,4 +6929,7 @@ body>*+* {
   .partners .school>.badge {
     font-size: 10px;
   }
+  .site-footer .info li {
+    font-size: 12px;
+}
 }
