@@ -2074,6 +2074,7 @@ body>*+* {
 
 .article .icons img {
   width: 60px;
+  margin-bottom: 0;
   margin-left: 10px;
   vertical-align: middle;
 }
@@ -2688,7 +2689,10 @@ body>*+* {
   border-radius: 8px;
   background: var(--white);
 }
-
+.share .icons{
+  display: flex;
+  align-items: center;
+}
 .journey .shot {
   position: relative;
 }
